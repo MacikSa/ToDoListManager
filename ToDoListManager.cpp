@@ -1,6 +1,10 @@
 #include <iostream>
+#include <string>
+#include "ToDoListManager.h"
 
-int main()
+using namespace std;
+
+void ToDoListManager::addTask(const string& taskName)
 {
-    std::cout << "Hello World!\n";
+	cout << "Added task" << endl;
 }
