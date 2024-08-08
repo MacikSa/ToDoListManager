@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 #include "ToDoListManager.h"
+#include <cstdlib>
 
 using namespace std;
 
 int main()
 {
     ToDoListManager manager;
-
+    manager.loadTaskFromFile("tasks.txt");
     do
     {
         int choice;
@@ -29,24 +30,44 @@ int main()
             cin.ignore();
             getline(cin, taskName);
             manager.addTask(taskName);
+            system("cls");
         }
         break;
         case 2:
         {
-            break;
+            system("cls");
+            manager.displayTasks();
+            system("cls");
+
         }
+        break;
         case 3:
         {
-            break;
+            int taskNumber;
+            cout << "Enter the number of the task to be deleted:" << endl;
+            cin >> taskNumber;
+            
+            manager.removeTask(taskNumber);
+            system("cls");
         }
+        break;
         case 4:
         {
-            break;
+            int taskNum;
+            cout << "Enter the task number to mark as completed:" << endl;
+            cin >> taskNum;
+            manager.markTaskAsCompleted(taskNum);
+            system("cls");
         }
+        break;
         case 5:
         {
-            break;
+            manager.saveTaskToFile("tasks.txt");
+            system("cls");
+            cout << "The task list has been saved. Exit the program." << endl;
+            return 0;
         }
+        break;
         default:
         {
             cout << "Invalid choice. Try again" << endl;
